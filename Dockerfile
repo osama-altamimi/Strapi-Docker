@@ -18,34 +18,38 @@ ENV DATABASE_NAME=${DATABASE_NAME}
 ENV DATABASE_USERNAME=${DATABASE_USERNAME}
 ENV DATABASE_PASSWORD=${DATABASE_PASSWORD}
 ENV DATABASE_SSL=${DATABASE_SSL}
-ENV JWT_SECRET=${JWT_SECRET}
 
 # App KEYS
-ARG APP_KEYS="Mf2Xy5UlyRYvEYA/jg8NoQ==,/h1ZHrBXKvjsXN2MdqrBmg==,vIYwlxicwixBMiVcqyIGHQ==,U580mmKKiCQnRcxKXcBXWw=="
-ARG API_TOKEN_SALT="JiJalDwFPjtz0zT0EgN6zQ=="
-ARG ADMIN_JWT_SECRET="mwiAaM8rJkYGcEMVZ2/hnw=="
-ARG TRANSFER_TOKEN_SALT="f+9hsSq+KOin62qH40aSNg=="
-
+# It is preferable to place four random keys, and preferably a 24-digit 
+ARG APP_KEYS="key1,key2,key3,key4"
+# It is preferable to place random keys consisting of 24 numbers
+ARG ADMIN_JWT_SECRET="key"
+# It is preferable to place random keys consisting of 24 numbers
+ARG API_TOKEN_SALT="key"
+# It is preferable to place random keys consisting of 24 numbers
+ARG TRANSFER_TOKEN_SALT="key"
+# It is preferable to place random keys consisting of 32 numbers
+ARG JWT_SECRET="key"
 ENV APP_KEYS=${APP_KEYS}
-ENV API_TOKEN_SALT=${API_TOKEN_SALT}
 ENV ADMIN_JWT_SECRET=${ADMIN_JWT_SECRET}
+ENV API_TOKEN_SALT=${API_TOKEN_SALT}
 ENV TRANSFER_TOKEN_SALT=${TRANSFER_TOKEN_SALT}
+ENV JWT_SECRET=${JWT_SECRET}
 
 # Application files
 WORKDIR /app
-VOLUME /app
 
 # Copy package files
-COPY package*.json ./
+COPY scripts/package.json ./
 
 # install packages
 RUN npm install
 
 # Copy strapi project files
-COPY config/ config/
-COPY public/ public/
-COPY src/ src/
-COPY favicon.png ./
+COPY scripts/config/ config/
+COPY scripts/public/ public/
+COPY scripts/src/ src/
+COPY scripts/favicon.png ./
 
 # Set permissions and change user
 ARG PUID=node
