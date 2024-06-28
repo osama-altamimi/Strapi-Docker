@@ -1,0 +1,41 @@
+version: "3.9"
+services:
+  strapi:
+    image: osama144/strapi:latest
+    container_name: Strapi
+    networks:
+      - networks_strapi
+    restart: on-failure:5
+    ports:
+      - 1337:1337
+    environment:
+      NODE_ENV: "development"
+      DATABASE_CLIENT: "mysql"
+      DATABASE_HOST: "mariadb"
+      DATABASE_PORT: "3306"
+      DATABASE_NAME: "strapi"
+      DATABASE_USERNAME: "strapi"
+      DATABASE_PASSWORD: "PxCt3uj61rpAdVB"
+      DATABASE_SSL: "false"
+    depends_on:
+      mariadb:
+        condition: service_started
+
+  mariadb:
+    image: mariadb:11.4.2
+    container_name: Strapi-MariaDB
+    networks:
+      - networks_strapi
+    restart: on-failure:5
+    environment:
+      MYSQL_USER: "strapi"
+      MYSQL_DATABASE: "strapi"
+      MYSQL_PASSWORD: "PxCt3uj61rpAdVB"
+      MYSQL_ROOT_PASSWORD: "8v9hw7rxlrY8mHp"
+    volumes:
+      - data:/var/lib/mysql:rw
+
+networks:
+  networks_strapi:
+    name: Strapi
+    driver: bridge
