@@ -1,9 +1,9 @@
 name: 📝 - Update Description
 
 on:
-  push:
-    paths:
-      - 'README.md'
+  # push:
+  #   paths:
+  #     - 'README.md'
   workflow_dispatch:
 
 jobs:
