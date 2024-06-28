@@ -54,6 +54,19 @@ This image allows you to create a new Strapi project.
 
 - `DATABASE_SSL` Boolean for SSL. | Default > `false`
 
+**App Keys** (Optional) - You set it up when you created the container.
+> If you would like to change these variables for the keys.
+
+- `APP_KEYS = "key1,key2,key3,key4"` It is preferable to place four random keys, preferably consisting of 24 numbers and letters.
+
+- `ADMIN_JWT_SECRET = "key"` It is preferred to include 24 random numbers and letters.
+
+- `API_TOKEN_SALT = "key"` It is preferred to include 24 random numbers and letters.
+
+- `TRANSFER_TOKEN_SALT = "key"` It is preferred to include 24 random numbers and letters.
+
+- `JWT_SECRET = "key"` It is preferred to include 32 random numbers and letters.
+
 ## 📚 Official Documentation
 
 - [Resource center](https://strapi.io/resource-center) - Strapi resource center.
