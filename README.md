@@ -12,7 +12,7 @@
 ## Example
 Using Docker Compose, create `docker-compose.yml` file with the following content:
 
-You can find more example on [GitHub](https://github.com/naskio/docker-strapi/tree/main/examples).
+You can find more example on [GitHub](https://github.com/osama-altamimi/Strapi-Docker/tree/main/examples).
 ```yml
 version: "3.9"
 services:
