@@ -9,7 +9,6 @@
 
 > This is Docker container for [Strapi (v4)](https://github.com/strapi/strapi)
 
-
 ## Example
 Using Docker Compose, create `docker-compose.yml` file with the following content:
 

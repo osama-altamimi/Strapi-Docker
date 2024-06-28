@@ -1,0 +1,40 @@
+version: "3.9"
+services:
+  strapi:
+    image: osama144/strapi:latest
+    container_name: Strapi
+    networks:
+      - networks_strapi
+    restart: on-failure:5
+    ports:
+      - 1337:1337
+    environment:
+      NODE_ENV: "development"
+      DATABASE_CLIENT: "postgres"
+      DATABASE_HOST: "postgresql"
+      DATABASE_PORT: "5432"
+      DATABASE_NAME: "strapi"
+      DATABASE_USERNAME: "strapi"
+      DATABASE_PASSWORD: "PxCt3uj61rpAdVB"
+      DATABASE_SSL: "false"
+    depends_on:
+      postgresql:
+        condition: service_started
+
+  postgresql:
+    image: postgres:16-alpine
+    container_name: Strapi-PostgreSQL
+    networks:
+      - networks_strapi
+    restart: on-failure:5
+    environment:
+      POSTGRES_DB: "strapi"
+      POSTGRES_USER: "strapi"
+      POSTGRES_PASSWORD: "PxCt3uj61rpAdVB"
+    volumes:
+      - data:/var/lib/postgresql/data:rw
+
+networks:
+  networks_strapi:
+    name: Strapi
+    driver: bridge
