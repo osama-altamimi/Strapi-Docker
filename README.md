@@ -35,7 +35,7 @@ This image allows you to create a new Strapi project.
 
 > The [Content-Type Builder](https://strapi.io/features/content-types-builder) plugin is disabled WHEN `NODE_ENV = production`.
 
-## Creating a new strapi project
+## ⚙️ Creating a new strapi project
 **Environment Variables**
 
 - `NODE_ENV` The command that will run in your project. | Default > `development`
@@ -54,7 +54,14 @@ This image allows you to create a new Strapi project.
 
 - `DATABASE_SSL` Boolean for SSL. | Default > `false`
 
-## Official Documentation
+## 📚 Official Documentation
 
-The official documentation of strapi is available on [https://docs.strapi.io/](https://docs.strapi.io/).
+- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
+- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
+- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
 
+---
+
+<div align="center">
+  <p>This project is a personal effort and is not affiliated with any company ❤️.</p>
+</div>
