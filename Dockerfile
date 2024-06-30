@@ -6,9 +6,11 @@ FROM node:${NODE_VERSION}-alpine
 RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev nasm bash vips-dev git
 
 # The environment in which the application is running
+ARG NODE_ENV="development"
 ENV NODE_ENV=${NODE_ENV}
 
 # Database
+ARG DATABASE_CLIENT="sqlite"
 ENV DATABASE_CLIENT=${DATABASE_CLIENT}
 ENV DATABASE_HOST=${DATABASE_HOST}
 ENV DATABASE_PORT=${DATABASE_PORT}
