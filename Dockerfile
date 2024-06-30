@@ -6,11 +6,9 @@ FROM node:${NODE_VERSION}-alpine
 RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev nasm bash vips-dev git
 
 # The environment in which the application is running
-# ARG NODE_ENV=development
 ENV NODE_ENV=${NODE_ENV}
 
 # Database
-# ARG DATABASE_CLIENT=sqlite
 ENV DATABASE_CLIENT=${DATABASE_CLIENT}
 ENV DATABASE_HOST=${DATABASE_HOST}
 ENV DATABASE_PORT=${DATABASE_PORT}
@@ -20,16 +18,11 @@ ENV DATABASE_PASSWORD=${DATABASE_PASSWORD}
 ENV DATABASE_SSL=${DATABASE_SSL}
 
 # App KEYS
-# It is preferable to place four random keys, and preferably a 24-digit 
-ARG APP_KEYS="key1,key2,key3,key4"
-# It is preferable to place random keys consisting of 24 numbers
-ARG ADMIN_JWT_SECRET="key"
-# It is preferable to place random keys consisting of 24 numbers
-ARG API_TOKEN_SALT="key"
-# It is preferable to place random keys consisting of 24 numbers
-ARG TRANSFER_TOKEN_SALT="key"
-# It is preferable to place random keys consisting of 32 numbers
-ARG JWT_SECRET="key"
+ARG APP_KEYS
+ARG ADMIN_JWT_SECRET
+ARG API_TOKEN_SALT
+ARG TRANSFER_TOKEN_SALT
+ARG JWT_SECRET
 ENV APP_KEYS=${APP_KEYS}
 ENV ADMIN_JWT_SECRET=${ADMIN_JWT_SECRET}
 ENV API_TOKEN_SALT=${API_TOKEN_SALT}
@@ -60,11 +53,10 @@ RUN chown -R ${PUID}:${PGID} /app
 USER ${PUID}:${PGID}
 
 # Build the application
-RUN ["npm", "run", "build"]
+RUN npm run build
 
 # Expose the application port
 EXPOSE 1337
 
 # Start the application
-# CMD ["npm", "run", "develop"]
 CMD if [ "$NODE_ENV" = "production" ]; then npm run start; elif [ "$NODE_ENV" = "development" ]; then npm run develop; else npm run develop; fi
