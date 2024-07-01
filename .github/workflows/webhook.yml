@@ -1,9 +1,9 @@
 name: 📬 - Webhook
 
 on:
-  push:
-    paths:
-      - 'release/strapi-latest.txt'
+  # push:
+  #   paths:
+  #     - 'release/strapi-latest.txt'
   workflow_dispatch:
 
 jobs:
