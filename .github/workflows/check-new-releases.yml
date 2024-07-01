@@ -3,9 +3,6 @@ name: 🔄 - Check for New Releases
 on:
   schedule:
     - cron: "0 0 */1 * *"
-  push:
-    paths:
-      - 'release/strapi-latest.txt'
   workflow_dispatch:
 
 jobs:
