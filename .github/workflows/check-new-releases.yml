@@ -26,13 +26,13 @@ jobs:
         id: check-changes
         run: |
           if git diff --quiet; then
-            echo "::set-output name=changes::false"
+            echo "changes=false" >> $GITHUB_ENV
           else
-            echo "::set-output name=changes::true"
+            echo "changes=true" >> $GITHUB_ENV
           fi
 
       - name: Register New Release
-        if: steps.check-changes.outputs.changes == 'true'
+        if: env.changes == 'true'
         run: |
           git config --global user.email "${{ secrets.MY_GITHUB_EMAIL }}"
           git config --global user.name "${{ github.repository_owner }}"
@@ -43,7 +43,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Webhook
-        if: steps.check-changes.outputs.changes == 'true'
+        if: env.changes == 'true'
         uses: satak/webrequest-action@master
         with:
           url: ${{ secrets.WEBHOOK_URL }}
