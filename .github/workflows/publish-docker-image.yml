@@ -1,9 +1,9 @@
 name: ✍️ - Build and Publish the Image
 
 on:
-  push:
-    paths:
-      - 'scripts/**'
+  # push:
+  #   paths:
+  #     - 'scripts/**'
   workflow_dispatch:
 
 jobs:
